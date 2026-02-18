@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Tommy ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family: 'Poppins', sans-serif;
+background: linear-gradient(135deg,#ff8dc7,#ffb6e6);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+section{
+padding:60px 20px;
+}
+
+h1{
+font-size:28px;
+}
+
+#countdown{
+font-size:32px;
+margin-top:20px;
+font-weight:bold;
+}
+
+.hidden{
+display:none;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:white;
+color:#ff4da6;
+font-size:16px;
+cursor:pointer;
+margin-top:20px;
+}
+
+video{
+width:90%;
+max-width:500px;
+border-radius:15px;
+margin-top:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+.fadeIn{
+animation:fade 2s ease-in-out;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOCK SCREEN -->
+<section id="lockScreen">
+<h1>Hey Tommy 🐾❤️</h1>
+<p>Something very special is waiting for you…</p>
+<p>27 February 12:00 AM tak wait karo meri Tommy 💖</p>
+<div id="countdown"></div>
+</section>
+
+<!-- MAIN SURPRISE CONTENT -->
+<div id="mainContent" class="hidden fadeIn">
+
+<audio id="bgMusic" loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<section>
+<h1>Happy Birthday My Tommy 🐾❤️</h1>
+<p>Duniya ke liye tum Gunjan ho…  
+Par mere liye tum hamesha meri Tommy rahogi 💖  
+Aur tumhara Bruno hamesha tumhare saath rahega 💍✨</p>
+
+<button onclick="startMusic()">Tap Here Tommy 🎵</button>
+
+<!-- VIDEO SECTION -->
+<video controls>
+<source src="video.mp4" type="video/mp4">
+</video>
+
+<!-- CUSTOM LOVE STORY -->
+<p style="margin-top:30px; font-size:18px; line-height:1.6;">
+Yaha par tum apni customized lines likh sakte ho ❤️  
+First meeting jab tumne mujhe Bruno bulaya tha…  
+Wahi se meri story start ho gayi 🐶💖  
+Ab tak ka safar… har smile… har fight…  
+Sab kuch sirf meri Tommy ke naam ✨
+</p>
+
+</section>
+
+</div>
+
+<script>
+
+// UNLOCK DATE (CHANGE YEAR IF NEEDED)
+var unlockDate = new Date("Feb 27, 2026 00:00:00").getTime();
+
+var timer = setInterval(function(){
+
+var now = new Date().getTime();
+var distance = unlockDate - now;
+
+var days = Math.floor(distance/(1000*60*60*24));
+var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+var seconds = Math.floor((distance%(1000*60))/1000);
+
+if(distance > 0){
+document.getElementById("countdown").innerHTML =
+days+"d "+hours+"h "+minutes+"m "+seconds+"s ";
+}else{
+clearInterval(timer);
+document.getElementById("lockScreen").style.display="none";
+document.getElementById("mainContent").classList.remove("hidden");
+autoPlayMusic();
+}
+
+},1000);
+
+function autoPlayMusic(){
+var music = document.getElementById("bgMusic");
+music.play().catch(function(){
+console.log("Autoplay blocked until user interaction.");
+});
+}
+
+function startMusic(){
+document.getElementById("bgMusic").play();
+}
+
+</script>
+
+</body>
+</html>
